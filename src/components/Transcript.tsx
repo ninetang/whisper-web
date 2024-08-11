@@ -19,8 +19,8 @@ export default function Transcript({ transcribedData }: Props) {
         URL.revokeObjectURL(url);
     };
     const exportTXT = () => {
-        let chunks = transcribedData?.chunks ?? [];
-        let text = chunks
+        const chunks = transcribedData?.chunks ?? [];
+        const text = chunks
             .map((chunk) => chunk.text)
             .join("")
             .trim();
@@ -32,7 +32,7 @@ export default function Transcript({ transcribedData }: Props) {
         let jsonData = JSON.stringify(transcribedData?.chunks ?? [], null, 2);
 
         // post-process the JSON to make it more readable
-        const regex = /(    "timestamp": )\[\s+(\S+)\s+(\S+)\s+\]/gm;
+        const regex = /( {4}"timestamp": )\[\s+(\S+)\s+(\S+)\s+]/gm;
         jsonData = jsonData.replace(regex, "$1[$2 $3]");
 
         const blob = new Blob([jsonData], { type: "application/json" });
@@ -78,13 +78,13 @@ export default function Transcript({ transcribedData }: Props) {
                         onClick={exportTXT}
                         className='text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 inline-flex items-center'
                     >
-                        Export TXT
+                        导出 TXT
                     </button>
                     <button
                         onClick={exportJSON}
                         className='text-white bg-green-500 hover:bg-green-600 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800 inline-flex items-center'
                     >
-                        Export JSON
+                        导出 JSON
                     </button>
                 </div>
             )}

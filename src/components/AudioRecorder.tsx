@@ -130,8 +130,8 @@ export default function AudioRecorder(props: {
                 onClick={handleToggleRecording}
             >
                 {recording
-                    ? `Stop Recording (${formatAudioTimestamp(duration)})`
-                    : "Start Recording"}
+                    ? `停止录制 (${formatAudioTimestamp(duration)})`
+                    : "开始录制"}
             </button>
 
             {recordedBlob && (

@@ -52,6 +52,7 @@ export interface Transcriber {
 }
 
 export function useTranscriber(): Transcriber {
+    // debugger;
     const [transcript, setTranscript] = useState<TranscriberData | undefined>(
         undefined,
     );
@@ -61,6 +62,7 @@ export function useTranscriber(): Transcriber {
     const [progressItems, setProgressItems] = useState<ProgressItem[]>([]);
 
     const webWorker = useWorker((event) => {
+        // debugger;
         const message = event.data;
         // Update the state with the result
         switch (message.status) {
@@ -87,6 +89,7 @@ export function useTranscriber(): Transcriber {
                 });
                 break;
             case "complete":
+                debugger;
                 // Received complete transcript
                 // console.log("complete", message);
                 // eslint-disable-next-line no-case-declarations
@@ -152,12 +155,12 @@ export function useTranscriber(): Transcriber {
                 if (audioData.numberOfChannels === 2) {
                     const SCALING_FACTOR = Math.sqrt(2);
 
-                    let left = audioData.getChannelData(0);
-                    let right = audioData.getChannelData(1);
+                    const left = audioData.getChannelData(0);
+                    const right = audioData.getChannelData(1);
 
                     audio = new Float32Array(left.length);
                     for (let i = 0; i < audioData.length; ++i) {
-                        audio[i] = SCALING_FACTOR * (left[i] + right[i]) / 2;
+                        audio[i] = (SCALING_FACTOR * (left[i] + right[i])) / 2;
                     }
                 } else {
                     // If the audio is not stereo, we can just use the first channel:

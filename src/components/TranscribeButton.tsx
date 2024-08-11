@@ -9,6 +9,7 @@ export function TranscribeButton(props: Props): JSX.Element {
         <button
             {...buttonProps}
             onClick={(event) => {
+                debugger;
                 if (onClick && !isTranscribing && !isModelLoading) {
                     onClick(event);
                 }
@@ -17,11 +18,11 @@ export function TranscribeButton(props: Props): JSX.Element {
             className='text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center'
         >
             {isModelLoading ? (
-                <Spinner text={"Loading model..."} />
+                <Spinner text={"加载模型..."} />
             ) : isTranscribing ? (
-                <Spinner text={"Transcribing..."} />
+                <Spinner text={"开始转换..."} />
             ) : (
-                "Transcribe Audio"
+                "音频转文字"
             )}
         </button>
     );

@@ -182,6 +182,7 @@ export function useTranscriber(): Transcriber {
     );
 
     const transcriber = useMemo(() => {
+        debugger
         return {
             onInputChange,
             isBusy,

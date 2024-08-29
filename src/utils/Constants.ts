@@ -28,7 +28,8 @@ export default {
     }.wav`,
     DEFAULT_MODEL: "Xenova/whisper-tiny",
     DEFAULT_SUBTASK: "transcribe",
-    DEFAULT_LANGUAGE: "english",
+    // DEFAULT_LANGUAGE: "english",
+    DEFAULT_LANGUAGE: "chinese",
     DEFAULT_QUANTIZED: isMobileOrTablet,
     DEFAULT_MULTILINGUAL: false,
 };

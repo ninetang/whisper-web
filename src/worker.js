@@ -1,9 +1,17 @@
+debugger
 /* eslint-disable camelcase */
 import { pipeline, env } from "@xenova/transformers";
+
+// npm i @xenova/transformers
+// import { pipeline } from '@xenova/transformers';
+
+// Allocate pipeline
+// const pipe = await pipeline('token-classification', 'Xenova/bert-base-chinese-ner');
 
 // Disable local models
 env.allowLocalModels = false;
 
+debugger;
 // Define model factories
 // Ensures only one model is created of each type
 class PipelineFactory {
@@ -20,12 +28,15 @@ class PipelineFactory {
 
     static async getInstance(progress_callback = null) {
         if (this.instance === null) {
+            debugger;
             this.instance = pipeline(this.task, this.model, {
                 quantized: this.quantized,
                 progress_callback,
 
                 // For medium models, we need to load the `no_attentions` revision to avoid running out of memory
-                revision: this.model.includes("/whisper-medium") ? "no_attentions" : "main"
+                revision: this.model.includes("/whisper-medium")
+                    ? "no_attentions"
+                    : "main",
             });
         }
 
@@ -70,12 +81,13 @@ const transcribe = async (
     subtask,
     language,
 ) => {
-
+    debugger
     const isDistilWhisper = model.startsWith("distil-whisper/");
+
 
     let modelName = model;
     if (!isDistilWhisper && !multilingual) {
-        modelName += ".en"
+        // modelName += ".en";
     }
 
     const p = AutomaticSpeechRecognitionPipelineFactory;

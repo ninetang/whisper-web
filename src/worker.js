@@ -171,7 +171,9 @@ const transcribe = async (
         stride_length_s: isDistilWhisper ? 3 : 5,
 
         // Language and task
-        language: language,
+        // language: language,
+        // language: "Simplified Chinese",
+        language: "zh",
         task: subtask,
 
         // Return timestamps

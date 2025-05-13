@@ -10,7 +10,6 @@ import Progress from "./Progress";
 import AudioRecorder from "./AudioRecorder";
 
 function titleCase(str: string) {
-    debugger;
     str = str.toLowerCase();
     const match = str.match(/\w+.?/g);
     if (match) {

@@ -2,6 +2,9 @@ import { useCallback, useMemo, useState } from "react";
 import { useWorker } from "./useWorker";
 import Constants from "../utils/Constants";
 
+// const converter = openccJs.Converter({ from: 'tw', to: 'cn' });
+// const OpenCC = require('opencc');
+
 interface ProgressItem {
     file: string;
     loaded: number;
@@ -182,7 +185,7 @@ export function useTranscriber(): Transcriber {
     );
 
     const transcriber = useMemo(() => {
-        debugger
+        // console.log(language);
         return {
             onInputChange,
             isBusy,

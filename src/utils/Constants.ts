@@ -29,7 +29,9 @@ export default {
     DEFAULT_MODEL: "Xenova/whisper-tiny",
     DEFAULT_SUBTASK: "transcribe",
     // DEFAULT_LANGUAGE: "english",
-    DEFAULT_LANGUAGE: "chinese",
+    // DEFAULT_LANGUAGE: "auto",
+    DEFAULT_LANGUAGE: "zh-CN",
     DEFAULT_QUANTIZED: isMobileOrTablet,
-    DEFAULT_MULTILINGUAL: false,
+    // DEFAULT_MULTILINGUAL: false,
+    DEFAULT_MULTILINGUAL: true,
 };
